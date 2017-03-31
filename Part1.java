@@ -44,8 +44,8 @@ public class Part1 {
         System.out.println("Test finished");
     }
 
-    public String findGene (String dna){
-        int startIndex = dna.indexOf("ATG");
+    public String findGene (String dna, int where){
+        int startIndex = dna.indexOf("ATG", where);
         if(startIndex==-1){
             return "";
         }
@@ -62,7 +62,7 @@ public class Part1 {
     public void testFindGene(){
         //            01234567890123456789
         String dna = "xxxATGyyyzzzTAA";
-        String gene = findGene(dna);
+        String gene = findGene(dna, 0);
         if(gene.equalsIgnoreCase("ATGyyyzzzTAA")) {
             System.out.println("DNA string is " + " " + dna);
             System.out.println("Gene is " + " " + gene);
@@ -72,7 +72,7 @@ public class Part1 {
         }
 
         dna = "GTTCAATAGCGGTAATTTCCC";
-        gene = findGene(dna);
+        gene = findGene(dna, 0);
         if(!gene.equalsIgnoreCase("")){
             System.out.println("error 2 (no ATG)");
         }
@@ -80,7 +80,7 @@ public class Part1 {
         System.out.println("Gene is "+ gene);
 
         dna = "ATGxxxyyyzTAAxxTAGzzzTGAxxxTAA";
-        gene = findGene(dna);
+        gene = findGene(dna, 0);
         if(!gene.equalsIgnoreCase("ATGxxxyyyzTAAxxTAG")) {
             System.out.println("error 3 (multiple stop codons)");
         }
@@ -88,7 +88,7 @@ public class Part1 {
         System.out.println("Gene is "+ gene);
 
         dna = "ATGTTTCCCAAAGTACTACTAA";
-        gene = findGene(dna);
+        gene = findGene(dna, 0);
         if(!gene.equalsIgnoreCase("")){
             System.out.println("error 4 (no stopCodon)");
         }
@@ -99,12 +99,12 @@ public class Part1 {
     public void printAllGenes (String dna){
         int startIndex = 0;
         while (true){
-            String currentGene = findGene(dna);
+            String currentGene = findGene(dna, startIndex);
             if (currentGene.isEmpty()){
                 break;
             }
             System.out.println(currentGene);
-            startIndex = (currentGene.length() + dna.indexOf(currentGene,startIndex));
+            startIndex = (dna.indexOf(currentGene,startIndex)+ currentGene.length());
         }
     }
 
@@ -118,5 +118,6 @@ public class Part1 {
         testOn("xxxAGGyyyAAAzzz");
         testOn("");
         testOn("ATGxxxyyyTGGzzzTcc");
+        testOn("ACCTATGTCAGTAAGCTGATTTTAATGCCCTTTATGTAGTAACTATGAAACCCTTGATTTAACAGT");
     }
 }
