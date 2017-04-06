@@ -3,9 +3,11 @@
  */
 public class Main {
     public static void main (String[] args){
-        /*Part1 test = new Part1();
-        test.test();*/
-        Part2 test =new Part2();
-        test.testHowMany();
+        /*Part1 test1 = new Part1();
+        test1.test();
+        Part2 test2 =new Part2();
+        test2.testHowMany();*/
+        Part3 test3 = new Part3();
+        test3.testCountGenes();
     }
 }
