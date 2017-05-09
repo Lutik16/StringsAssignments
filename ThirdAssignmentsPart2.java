@@ -30,6 +30,17 @@ public class ThirdAssignmentsPart2 {
         System.out.println("cgRatio = "+ r);
     }
 
+    public int countCTG (String dna){
+        int ctg = countSmth(dna, "CTG");
+        return ctg;
+    }
+
+    public void testCTG (String dna){
+        System.out.println("Testing countCTG on "+ dna);
+        int ctg = countCTG(dna);
+        System.out.println("Number of CTG is "+ ctg);
+    }
+
     public void test(){
         //           --v--v--vvvv--
         testOn("ABCEFGRTCGCGRT");
@@ -37,5 +48,10 @@ public class ThirdAssignmentsPart2 {
         testOn("ASASASRTRTRTDFDFDF");
         testOn("QWERTYUIG");
         testOn("CGCGGCCGGC");
+
+        testCTG("ABCTGABTGCTGCTGCTGAB");
+        testCTG("ABABABABCTG");
+        testCTG("ABABABABABABA");
+        testCTG("CTGCTGCTGGTCTGABCTG");
     }
 }
